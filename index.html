@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+	<style>
+		body {
+			width: 1665px;
+			height: 2154px;
+			margin-left: 70;
+			background-color: #333333;
+		}
+		/* exported: 1665x2154 with 60x60 cells, 25x33 = 1500x1980 */
+		/* iPad pro 1024x1366 */
+		#app {
+			display: grid;
+			grid-template-columns: repeat(25, 1fr);
+			grid-template-rows: repeat(33, 1fr);
+		}
+
+		.cell {
+			border: 1px solid red;
+			width: 41px;
+			height: 41px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-for="cell in cells">{cell}</div>
+	</div>
+
+	<script>
+	  const { createApp } = Vue
+	  const App = {
+	    data() {
+	      return {
+	   		cols: 25,
+	   		rows: 33,
+	      }
+	    }, 
+	    computed: {
+	    	cells() {
+	    		return this.cols * this.rows
+	    	}
+	    }
+	  }
+
+
+	  createApp(App).mount('#app')
+	</script>
+</body>
+</html>
